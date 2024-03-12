@@ -1,5 +1,7 @@
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
-    }
+        BucketSort bs = new BucketSort(new int[]{4, 6, 7, 2, 5, 4});
+        bs.sort();
+
+        }
 }
