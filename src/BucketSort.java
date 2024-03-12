@@ -33,7 +33,7 @@ public class BucketSort {
     public int[] sort()
     {
         for (int i = 0; i < input.length; i++) {
-            bucket[(int) Math.floor((k*input[i])/(m+1))][i] = 5;
+            bucket[(int) Math.floor((k*input[i])/(m+1))][i] = input[i];
         }
         for (int i = 0; i < k; i++) {
             bucket[i] = insertionSort(bucket[i]);
@@ -42,16 +42,16 @@ public class BucketSort {
         sorted = concatenateArrays(bucket);
 
         System.out.println(sorted.toString());
-
         return sorted;
     }
 
-    private int[] insertionSort(int[] arr) {
+    private int[] insertionSort(int[] arr)
+    {
         int n = arr.length;
         for (int i = 1; i < n; ++i) {
             int key = arr[i];
             int j = i - 1;
-
+ 
             while (j >= 0 && arr[j] > key) {
                 arr[j + 1] = arr[j];
                 j = j - 1;
