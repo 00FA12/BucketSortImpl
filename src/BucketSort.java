@@ -16,7 +16,10 @@ public class BucketSort {
 
     private int findK()
     {
-        return findMax()/input.length;
+        if (findMax()/10 == 0) {
+            return 1;
+        }
+        return findMax()/10;
     }
 
     private int findMax()
@@ -66,9 +69,13 @@ public class BucketSort {
         int[] array = new int[input.length];
 
         int i = 0;
-        
+
+
         for (int[] arr : arrays) {
             for (int value : arr) {
+                if (value == 0) {
+                    continue;
+                }
                 array[i++] = value;
             }
         }
