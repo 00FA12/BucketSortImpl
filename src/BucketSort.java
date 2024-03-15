@@ -36,7 +36,7 @@ public class BucketSort {
     public int[] sort()
     {
         for (int i = 0; i < input.length; i++) {
-            bucket[(int) Math.floor((k*input[i])/(m+1))][i] = input[i];
+            bucket[(int)((k*input[i])/(m+1))][i] = input[i];
         }
         for (int i = 0; i < k; i++) {
             bucket[i] = insertionSort(bucket[i]);
@@ -73,12 +73,16 @@ public class BucketSort {
 
         for (int[] arr : arrays) {
             for (int value : arr) {
-                if (value == 0) {
-                    continue;
+                if (value != 0) {
+                    array[i++] = value;
                 }
-                array[i++] = value;
             }
         }
-        return array;
+        int[] reassigned = new int[i];
+
+        for (int j = 0; j < i; j++) {
+            reassigned[j] = array[j];
+        }
+        return reassigned;
     }
 }

@@ -4,7 +4,7 @@ public class App {
     public static void main(String[] args) throws Exception {
         int[] bigList = new int[1000];
         Random random = new Random();
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 10; i++) {
             int rand = random.nextInt(1,1000);
             bigList[i] = rand;
         }
