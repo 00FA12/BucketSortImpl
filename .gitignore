@@ -1,5 +1,6 @@
 .vscode/
 bin/
+out/*/*/*.class
 src/*.class
 App.class
 BucketSortImpl.class
