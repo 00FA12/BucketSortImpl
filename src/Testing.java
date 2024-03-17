@@ -130,11 +130,6 @@ public class Testing {
             int firstPart = (int) floor(size * 0.1);
             int secondPart = (int) floor(size * 0.5);
             int lastPart = size - firstPart - secondPart;
-            //just checking if my math is mathing :)))
-            //System.out.println(firstPart);
-            //System.out.println(secondPart);
-            //System.out.println(lastPart);
-            //System.out.println("size = " + (lastPart + firstPart + secondPart));
             for(int i=0; i<firstPart; i++){
                 int rand = random.nextInt(1,100);
                 array[i] = rand;
