@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import static java.lang.Math.floor;
+
 public class Testing {
 
     public static void main(String[] args) {
@@ -61,8 +63,96 @@ public class Testing {
 
         outputbucketsort(bigemptylistsorted);
 
+        //Using clumpedList and smallList cause lists have the same size
+        //Scenario 1 - not evenly distributed
+        //BucketSort notEvenlyDistributed = new BucketSort(clumpedList);
+        //outputTimeForSorting(notEvenlyDistributed);
 
+        //Scenario 2 - evenly distributed
+        //BucketSort evenlyDistributed = new BucketSort(smallList);
+        //outputTimeForSorting(evenlyDistributed);
+
+
+        //for Graph
+        //size 100:
+        System.out.println("size 100:");
+        outputTimeForSorting(new BucketSort(generateData(100, true)));
+        outputTimeForSorting(new BucketSort(generateData(100, false)));
+
+        //size 250:
+        System.out.println("size 250:");
+        outputTimeForSorting(new BucketSort(generateData(250, true)));
+        outputTimeForSorting(new BucketSort(generateData(250, false)));
+
+
+        //size 500:
+        System.out.println("size 500:");
+        outputTimeForSorting(new BucketSort(generateData(500, true)));
+        outputTimeForSorting(new BucketSort(generateData(500, false)));
+
+        //size 750:
+        System.out.println("size 750:");
+        outputTimeForSorting(new BucketSort(generateData(750, true)));
+        outputTimeForSorting(new BucketSort(generateData(750, false)));
+
+        //size 1000:
+        System.out.println("size 1000:");
+        outputTimeForSorting(new BucketSort(generateData(1000, true)));
+        outputTimeForSorting(new BucketSort(generateData(1000, false)));
+
+        //size 5000:
+        System.out.println("size 5000:");
+        outputTimeForSorting(new BucketSort(generateData(5000, true)));
+        outputTimeForSorting(new BucketSort(generateData(5000, false)));
+
+        //size 10000:
+        System.out.println("size 10000:");
+        outputTimeForSorting(new BucketSort(generateData(10000, true)));
+        outputTimeForSorting(new BucketSort(generateData(10000, false)));
+
+
+        //size 50000:
+        System.out.println("size 50000:");
+        outputTimeForSorting(new BucketSort(generateData(50000, true)));
+        outputTimeForSorting(new BucketSort(generateData(50000, false)));
     }
+
+    private static int[] generateData(int size, boolean evenlyDistributed){
+        Random random = new Random();
+        int[] array = new int[size];
+        if(evenlyDistributed){
+            for(int i=0; i<size; i++){
+                int rand = random.nextInt(1,1000);
+                array[i] = rand;
+            }
+        }
+        if(!evenlyDistributed){
+            int firstPart = (int) floor(size * 0.1);
+            int secondPart = (int) floor(size * 0.5);
+            int lastPart = size - firstPart - secondPart;
+            //just checking if my math is mathing :)))
+            //System.out.println(firstPart);
+            //System.out.println(secondPart);
+            //System.out.println(lastPart);
+            //System.out.println("size = " + (lastPart + firstPart + secondPart));
+            for(int i=0; i<firstPart; i++){
+                int rand = random.nextInt(1,100);
+                array[i] = rand;
+            }
+
+            for(int i=0; i<secondPart; i++){
+                int rand = random.nextInt(1,10000);
+                array[i] = rand;
+            }
+
+            for(int i=0; i<lastPart; i++){
+                int rand = random.nextInt(900,1000);
+                array[i] = rand;
+            }
+        }
+        return array;
+    }
+
 
     private static void outputbucketsort(BucketSort input)
     {
@@ -73,4 +163,14 @@ public class Testing {
             System.out.println(temp.toString());
         }
     }
+
+private static void outputTimeForSorting(BucketSort input){
+        long startTime = System.nanoTime();
+        input.sort();
+        long endTime = System.nanoTime();
+
+        long timePassed = endTime - startTime;
+
+        System.out.println("Time passed:" + timePassed/100);
+        }
 }
