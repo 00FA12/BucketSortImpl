@@ -15,3 +15,5 @@ BucketSortImpl.class
 BucketSortImpl.iml
 Assignment1.iml
 .idea
+*.docx
+*.zip
